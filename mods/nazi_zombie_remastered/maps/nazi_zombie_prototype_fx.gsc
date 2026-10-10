@@ -83,6 +83,9 @@ precache_createfx_fx()
   level._effect["dlight_fire_glow"]			       = loadfx ("env/light/fx_dlight_fire_glow");
   level._effect["fire_static_small"]			     = loadfx ("env/fire/fx_static_fire_sm_ndlight");
 	level._effect["fire_static_blk_smk"]			   = loadfx ("env/fire/fx_static_fire_md_ndlight");
+
+	level._effect["betty_explode"] = loadfx("weapon/bouncing_betty/fx_explosion_betty_generic");
+	level._effect["betty_trail"]   = loadfx("weapon/bouncing_betty/fx_betty_trail");
 }
 
 scriptedFX()

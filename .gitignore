@@ -1,0 +1,16 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.VC.db
+
+# Logs
+*.log
+
+# Compiled WaW mod files
+mod.ff
+*.iwd
+
+# Build artifacts
+*.tmp
+*.bak

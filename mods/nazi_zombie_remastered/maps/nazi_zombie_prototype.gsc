@@ -26,13 +26,27 @@ main()
 	precachemodel("collision_geo_64x64x64");
 
 	include_weapons();
+	PrecacheItem("mine_bouncing_betty");
 	include_powerups();
+
+	maps\_zombiemode_perks::precache_perk_assets();
 	
 	if( !isdefined( level.startInvulnerableTime ) )
 		level.startInvulnerableTime = GetDvarInt( "player_deathInvulnerableTime" );
 
+	level.hasBettyFiredRecently = 0;
+	level thread maps\_zombiemode_betty::update_betty_fires();
+
 	maps\nazi_zombie_prototype_fx::main();
 	maps\_zombiemode::main();
+
+	test_spawn_jugg();
+	spawn_power_switch();
+
+	maps\_zombiemode_perks::init();
+
+	flag_init("electric_switch_used");
+	level thread nacht_master_electric_switch();
 
 	init_sounds();
 	init_achievement();
@@ -65,6 +79,8 @@ main()
 
 	//players[randomint(players.size)] thread level_start_vox();
 	level thread level_start_vox();
+
+	level thread debug_show_position();
 
 	level thread prototype_eggs();
 	level thread play_music_easter_egg();
@@ -809,4 +825,126 @@ play_music_easter_egg()
 
 	setmusicstate("WAVE_1");
 	level.eggs = 0;
+}
+
+debug_show_position()
+{
+    players = get_players();
+
+    while ( players.size < 1 )
+    {
+        wait(0.1);
+        players = get_players();
+    }
+
+    player = players[0];
+
+    while (1)
+    {
+        origin = player.origin;
+
+        iprintln(
+            "X: " + origin[0] +
+            " Y: " + origin[1] +
+            " Z: " + origin[2]
+        );
+
+        wait(1);
+    }
+}
+
+test_spawn_jugg()
+{
+    jugg = spawn("script_model", (169, 324, 144));
+    jugg setmodel("zombie_vending_jugg");
+	jugg.targetname = "vending_jugg";
+
+    // eger Jug icin su an angle veriyorsan aynisini burada birak:
+    //	jugg.angles = (0, 0, 0);
+
+    jugg_collision_bottom = spawnCollision(
+		"collision_geo_64x64x64",
+		"collider",
+		jugg.origin,
+		jugg.angles
+	);
+
+	jugg_collision_top = spawnCollision(
+		"collision_geo_64x64x64",
+		"collider",
+		jugg.origin + (0, 0, 64),
+		jugg.angles
+	);
+
+	// Purchase trigger
+    jugg_trigger = spawn("trigger_radius", (0, 0, 0), 1, 50, 72);
+    jugg_trigger.origin = jugg.origin;
+    jugg_trigger.targetname = "runtime_jugg_trigger";
+    jugg_trigger.script_noteworthy = "specialty_armorvest";
+
+    // Trigger kendi behavior thread'ini calistirsin
+    jugg_trigger thread maps\_zombiemode_perks::runtime_jugg_trigger_think();
+}
+
+spawn_power_switch()
+{
+    switch_base_pos = (365, 630, 10);
+    switch_handle_pos = (365, 635, 60);
+
+    switch_base_ang = (0, 180, 0);
+    switch_handle_ang = (0, 180, 90);
+
+    switch_base = spawn("script_model", switch_base_pos);
+    switch_base setmodel("zombie_power_lever");
+    switch_base.angles = switch_base_ang;
+
+    switch_handle = spawn("script_model", switch_handle_pos);
+    switch_handle setmodel("zombie_power_lever_handle");
+    switch_handle.angles = switch_handle_ang;
+    switch_handle.targetname = "master_switch";
+
+
+    // Kullanma trigger'i
+    power_trigger = spawn("trigger_radius", (0, 0, 0), 1, 45, 72);
+
+    // Oyuncunun bulundugu tarafa biraz one aliyoruz.
+    power_trigger.origin = switch_handle_pos + (0, 35, 0);
+
+    power_trigger.targetname = "use_master_switch";
+    power_trigger SetCursorHint("HINT_NOICON");
+    power_trigger SetHintString(&"REMASTERED_ZOMBIE_ELECTRIC_SWITCH");
+//  power_trigger UseTriggerRequireLookAt();
+}
+
+nacht_master_electric_switch()
+{
+    trig = getent("use_master_switch", "targetname");
+    master_switch = getent("master_switch", "targetname");
+
+    while (1)
+    {
+        trig waittill("trigger", user);
+
+        if (!maps\_zombiemode_perks::wait_for_use_press(user, trig, 70))
+            continue;
+
+        trig delete();
+
+        master_switch rotateroll(-90, 0.3);
+        master_switch playsound("switch_flip");
+
+        level notify("switch_flipped");
+        flag_set("electric_switch_used");
+
+        master_switch waittill("rotatedone");
+
+        level notify("master_switch_activated");
+
+        level notify("sleight_on");
+        level notify("revive_on");
+        level notify("doubletap_on");
+        level notify("juggernog_on");
+
+        break;
+    }
 }

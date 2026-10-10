@@ -733,6 +733,8 @@ onPlayerSpawned()
 		}
 		#/
 		
+//		iprintlnbold("^3WAITING FOR SPAWNED_PLAYER");
+
 		self waittill( "spawned_player" ); 
 
 		self.maxhealth = 100; 
@@ -761,7 +763,8 @@ onPlayerSpawned()
 		// make sure any existing attachments have been removed		
 		self DetachAll(); 
 
-		self maps\_loadout::give_model( self.pers["class"] ); 
+		self maps\_loadout::give_model( self.pers["class"] );
+
 		maps\_loadout::give_loadout( true );
 	
 		// SCRIPTER_MOD: SRS 5/3/2008: to support _weather

@@ -724,7 +724,7 @@ spawnPlayer( spawnOnHost )
 		self [[level.onSpawnPlayer]](); 
 	}
 
-	wait_for_first_player(); 
+	wait_for_first_player();
 	
 	if( isdefined( spawnOnHost ) )
 	{
@@ -751,7 +751,7 @@ spawnPlayer( spawnOnHost )
 	self maps\_introscreen::introscreen_player_connect(); 
 
 	// should not need this wait.  something in the spawn overides the weapons
-	waittillframeend; 
+	waittillframeend;
 	
 	// CODER_MOD
 	// Dan L( 08/01/06 ) we need to delay the rest of the creation process, until the messages dealing with the

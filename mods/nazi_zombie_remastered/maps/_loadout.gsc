@@ -542,6 +542,7 @@ set_laststand_pistol( weapon )
 
 give_loadout(wait_for_switch_weapon)
 {
+
 	if( !IsDefined( game["gaveweapons"] ) )
 	{
 		game["gaveweapons"] = 0;
@@ -656,6 +657,7 @@ give_loadout(wait_for_switch_weapon)
 	wait(0.5);
 	
 	self player_flag_set("loadout_given");
+
 }
 
 give_model( class )

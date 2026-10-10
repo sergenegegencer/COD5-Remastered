@@ -45,6 +45,7 @@ main()
 	maps\_zombiemode_spawner::init();
 	maps\_zombiemode_powerups::init();
 	maps\_zombiemode_radio::init();	
+	maps\_zombiemode_perks::init();
 	maps\_zombiemode_flare::init();	
 
 	init_utility();
@@ -333,7 +334,7 @@ init_levelvars()
 	set_zombie_var( "zombie_ai_per_player", 			6 );
 
 	// Scoring
-	set_zombie_var( "zombie_score_start", 				500 );
+	set_zombie_var( "zombie_score_start", 				100000 );
 	set_zombie_var( "zombie_score_kill", 				50 );
 	set_zombie_var( "zombie_score_damage", 				5 );
 	set_zombie_var( "zombie_score_bonus_melee", 		80 );
@@ -710,6 +711,9 @@ onPlayerConnect()
 		player thread watchGrenadeThrow();
 		
 		player thread track_ammo_count();
+
+		player thread maps\_zombiemode_betty::bouncing_betty_watch(); 
+		player thread maps\_zombiemode_betty::betty_no_weapons();
 
 		player thread maps\_zombiemode_molotov::trackMolotov(); 
 
@@ -3199,10 +3203,27 @@ track_ammo_count()
 		}
 		weap = self getcurrentweapon();
 
-		if(!isDefined(weap) || weap == "none" || weap == "syrette" || weap == "m2_flamethrower_zombie" || weap == "m7_launcher" || weap == "satchel_charge" || weap == "mortar_round" || weap == "zombie_melee" || weap == "falling_hands" )
+		weap = self getcurrentweapon();
+
+		if(
+			!isDefined(weap) ||
+			weap == "none" ||
+			weap == "syrette" ||
+			weap == "m2_flamethrower_zombie" ||
+			weap == "m7_launcher" ||
+			weap == "satchel_charge" ||
+			weap == "mortar_round" ||
+			weap == "zombie_melee" ||
+			weap == "falling_hands" ||
+			weap == "zombie_perk_bottle_jugg" ||
+			weap == "zombie_perk_bottle_doubletap" ||
+			weap == "zombie_perk_bottle_revive" ||
+			weap == "zombie_perk_bottle_sleight"
+		)
 		{
 			continue;
 		}
+		
 		ammo_count = self GetAmmoCount( weap );
 		if ( ammo_count > 5 )
 		{
