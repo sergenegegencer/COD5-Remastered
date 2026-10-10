@@ -80,6 +80,7 @@ maps\_zombiemode.gsc
 maps\_zombiemode_achievement.gsc
 maps\_zombiemode_betty.gsc
 maps\_zombiemode_blockers.gsc
+maps\_zombiemode_cymbal_monkey.gsc
 maps\_zombiemode_flare.gsc
 maps\_zombiemode_health_help.gsc
 maps\_zombiemode_molotov.gsc
@@ -685,6 +686,7 @@ weapons\sp\syrette
 weapons\sp\thompson
 weapons\sp\type100_smg
 weapons\sp\zombie_colt
+weapons\sp\zombie_cymbal_monkey
 weapons\sp\zombie_perk_bottle_doubletap
 weapons\sp\zombie_perk_bottle_jugg
 weapons\sp\zombie_perk_bottle_revive

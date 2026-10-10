@@ -223,3 +223,7 @@ weapon,sp/mine_bouncing_betty
 fx,weapon/bouncing_betty/fx_explosion_betty_generic
 fx,weapon/bouncing_betty/fx_betty_trail
 sound,nazi_zombie_betty,,all_sp
+weapon,sp/zombie_cymbal_monkey
+fx,maps/zombie/fx_zombie_monkey_light
+rawfile,animtrees/zombie_cymbal_monkey.atr
+sound,dlc_share,,all_sp

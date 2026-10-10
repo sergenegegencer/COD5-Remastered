@@ -46,7 +46,8 @@ main()
 	maps\_zombiemode_powerups::init();
 	maps\_zombiemode_radio::init();	
 	maps\_zombiemode_perks::init();
-	maps\_zombiemode_flare::init();	
+	maps\_zombiemode_flare::init();
+	maps\_zombiemode_cymbal_monkey::init();	
 
 	init_utility();
 
@@ -714,6 +715,8 @@ onPlayerConnect()
 
 		player thread maps\_zombiemode_betty::bouncing_betty_watch(); 
 		player thread maps\_zombiemode_betty::betty_no_weapons();
+
+		player thread maps\_zombiemode_cymbal_monkey::player_handle_cymbal_monkey();
 
 		player thread maps\_zombiemode_molotov::trackMolotov(); 
 
