@@ -793,20 +793,28 @@ treasure_chest_give_weapon( weapon_string )
 
 	if( weapon_string == "molotov" )
 	{
-		has_weapon = self HasWeapon( "signal_flare" );
-		if( isDefined(has_weapon) && has_weapon )
+		if( self HasWeapon( "signal_flare" ) )
 		{
 			self TakeWeapon( "signal_flare" );
 		}
+
+		if( self HasWeapon( "zombie_cymbal_monkey" ) )
+		{
+			self TakeWeapon( "zombie_cymbal_monkey" );
+		}
 	}
+
 	if( weapon_string == "signal_flare" )
 	{
-		has_weapon = self HasWeapon( "molotov" );
-		if( isDefined(has_weapon) && has_weapon )
+		if( self HasWeapon( "molotov" ) )
 		{
 			self TakeWeapon( "molotov" );
 		}
 
+		if( self HasWeapon( "zombie_cymbal_monkey" ) )
+		{
+			self TakeWeapon( "zombie_cymbal_monkey" );
+		}
 	}
 
     if ( (weapon_string == "ray_gun") )
