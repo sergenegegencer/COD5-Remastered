@@ -140,6 +140,7 @@ init_weapons()
 	// Special                                          	
 	add_zombie_weapon( "mortar_round", 						&"ZOMBIE_WEAPON_MORTARROUND_2000", 								2000,	"",				0);
 	add_zombie_weapon( "satchel_charge", 					&"REMASTERED_ZOMBIE_SATCHEL_PURCHASE", 									2000,	"",				0);
+	add_zombie_weapon( "zombie_cymbal_monkey",              &"ZOMBIE_WEAPON_SATCHEL_2000",                                  2000,   "vox_monkey",   8);
 	add_zombie_weapon( "ray_gun", 							&"ZOMBIE_WEAPON_RAYGUN_10000", 									10000,	"vox_raygun",	3); // 66% chance for all characters except Sarge because he has 3 unique lines, so 100% for him
 	// ONLY 1 OF THE BELOW SHOULD BE ALLOWED
 	add_limited_weapon( "m2_flamethrower_zombie", 1 );
@@ -767,7 +768,7 @@ treasure_chest_give_weapon( weapon_string )
 
 		if( isdefined( current_weapon ) )
 		{
-			if( !( weapon_string == "fraggrenade" || weapon_string == "stielhandgranate" || weapon_string == "molotov" || weapon_string == "mortar_round" || weapon_string == "signal_flare" ) )
+			if( !( weapon_string == "fraggrenade" || weapon_string == "stielhandgranate" || weapon_string == "molotov" || weapon_string == "mortar_round" || weapon_string == "signal_flare" || weapon_string == "zombie_cymbal_monkey" ) )
 			self TakeWeapon( current_weapon ); 
 		} 
 	} 
@@ -781,7 +782,7 @@ treasure_chest_give_weapon( weapon_string )
 				continue; 
 			}
 
-			if( weapon_string != "fraggrenade" && weapon_string != "stielhandgranate" && weapon_string != "molotov" && weapon_string != "mortar_round" && weapon_string != "signal_flare"  )
+			if( weapon_string != "fraggrenade" && weapon_string != "stielhandgranate" && weapon_string != "molotov" && weapon_string != "mortar_round" && weapon_string != "signal_flare" && weapon_string != "zombie_cymbal_monkey" )
 			{
 				self TakeWeapon( primaryWeapons[i] ); 
 			}
@@ -812,6 +813,27 @@ treasure_chest_give_weapon( weapon_string )
     {
         playsoundatposition("raygun_stinger", (0,0,0));
     }
+
+	if( weapon_string == "zombie_cymbal_monkey" )
+	{
+		if( self HasWeapon( "molotov" ) )
+		{
+			self TakeWeapon( "molotov" );
+		}
+
+		if( self HasWeapon( "signal_flare" ) )
+		{
+			self TakeWeapon( "signal_flare" );
+		}
+
+		self PlaySound( "raygun_stinger", (0,0,0));
+
+		self maps\_zombiemode_cymbal_monkey::player_give_cymbal_monkey();
+		self notify( "you_got_monks" );
+
+		play_weapon_vo( weapon_string );
+		return;
+	}
 
 	self GiveWeapon( weapon_string, 0 );
 	self GiveMaxAmmo( weapon_string );

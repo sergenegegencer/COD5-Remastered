@@ -390,6 +390,7 @@ include_weapons()
 
 	// Special
 	include_weapon( "ray_gun" );
+	include_weapon( "zombie_cymbal_monkey" );
 	include_weapon( "mortar_round" );
 	include_weapon( "satchel_charge", false ); // Only in crate
 	//include_weapon( "falling_hands", false ); // Death anim
