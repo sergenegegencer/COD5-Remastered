@@ -1826,3 +1826,16 @@ achievement_notify( notify_name )
 {
 	self notify( notify_name );
 }
+
+is_magic_bullet_shield_enabled( ent )
+{
+    if( !IsDefined( ent ) )
+        return false;
+
+    return ( IsDefined( ent.magic_bullet_shield ) && ent.magic_bullet_shield == true );
+}
+
+enemy_is_dog()
+{
+    return ( IsDefined( self.type ) && self.type == "dog" );
+}

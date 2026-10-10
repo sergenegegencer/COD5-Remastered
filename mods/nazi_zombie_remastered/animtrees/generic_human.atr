@@ -2783,7 +2783,14 @@ body
 			ai_zombie_death_v1
 			ai_zombie_death_v2	
 			ai_zombie_crawl_death_v1
-			ai_zombie_crawl_death_v2			
+			ai_zombie_crawl_death_v2
+			ai_zombie_tesla_death_a
+			ai_zombie_tesla_death_b
+			ai_zombie_tesla_death_c
+			ai_zombie_tesla_death_d
+			ai_zombie_tesla_death_e
+			ai_zombie_tesla_crawl_death_a
+			ai_zombie_tesla_crawl_death_b			
 
 			ch_pel1_underwater_death
 			ch_pel1_underwater_death2																													
@@ -2798,7 +2805,7 @@ body
         	ch_peleliu1a_outro_japanese_officer_v2
         	ch_peleliu1a_outro_jackson_v2
         	ch_peleliu1a_outro_polonsky_v2
-        	ch_peleliu1a_outro_jackson_loop_v2 		//	– this anim plays if the jap soldier never reaches Jackson (red shirt)
+        	ch_peleliu1a_outro_jackson_loop_v2 		//	ï¿½ this anim plays if the jap soldier never reaches Jackson (red shirt)
         	ch_peleliu1a_outro_jackson_defend_v2 		
         	
         	ch_pel1_underwater_sullivan	

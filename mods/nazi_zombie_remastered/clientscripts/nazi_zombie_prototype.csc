@@ -53,6 +53,9 @@ main()
 
 	clientscripts\nazi_zombie_prototype_fx::main();
 
+	// Wunderwaffe DG-2 client-side FX initialization
+	clientscripts\_zombiemode_tesla::init();
+
 //	thread clientscripts\_fx::fx_init(0);
 	thread clientscripts\_audio::audio_init(0);
 

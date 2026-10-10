@@ -43,6 +43,9 @@ main()
 	maps\_zombiemode_weapons::init();
 	maps\_zombiemode_blockers::init();
 	maps\_zombiemode_spawner::init();
+	println( "BEFORE TESLA INIT" );
+	maps\_zombiemode_tesla::init();
+	println( "AFTER TESLA INIT" );
 	maps\_zombiemode_powerups::init();
 	maps\_zombiemode_radio::init();	
 	maps\_zombiemode_perks::init();
@@ -581,6 +584,29 @@ init_anims()
 	level._zombie_deaths["zombie"][1] = %ch_dazed_b_death;
 	level._zombie_deaths["zombie"][2] = %ch_dazed_c_death;
 	level._zombie_deaths["zombie"][3] = %ch_dazed_d_death;
+
+	// Wunderwaffe DG-2 death animations
+	if( !isDefined( level._zombie_tesla_death ) )
+	{
+		level._zombie_tesla_death = [];
+	}
+
+	level._zombie_tesla_death["zombie"] = [];
+	level._zombie_tesla_death["zombie"][0] = %ai_zombie_tesla_death_a;
+	level._zombie_tesla_death["zombie"][1] = %ai_zombie_tesla_death_b;
+	level._zombie_tesla_death["zombie"][2] = %ai_zombie_tesla_death_c;
+	level._zombie_tesla_death["zombie"][3] = %ai_zombie_tesla_death_d;
+	level._zombie_tesla_death["zombie"][4] = %ai_zombie_tesla_death_e;
+
+	if( !isDefined( level._zombie_tesla_crawl_death ) )
+	{
+		level._zombie_tesla_crawl_death = [];
+	}
+
+	level._zombie_tesla_crawl_death["zombie"] = [];
+	level._zombie_tesla_crawl_death["zombie"][0] = %ai_zombie_tesla_crawl_death_a;
+	level._zombie_tesla_crawl_death["zombie"][1] = %ai_zombie_tesla_crawl_death_b;
+
 }
 
 // Initialize any animscript related variables

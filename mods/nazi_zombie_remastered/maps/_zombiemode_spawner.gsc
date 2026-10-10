@@ -1876,12 +1876,25 @@ zombie_damage( mod, hit_location, hit_origin, player, amount )
 		return; 
 	}
 
+	if( IsDefined( self.damageweapon ) )
+	{
+		if( self.damageweapon == "tesla_gun" || self.damageweapon == "tesla_gun_upgraded" )
+		{
+			iprintlnbold( "TESLA HIT! MOD: " + mod );
+		}
+	}
+
 	if( self zombie_flame_damage( mod, player ) )
 	{
 		if( self zombie_give_flame_damage_points() )
 		{
 			player maps\_zombiemode_score::player_add_points( "damage", mod, hit_location );
 		}
+	}
+	else if( self maps\_zombiemode_tesla::is_tesla_damage( mod ) )
+	{
+		self maps\_zombiemode_tesla::tesla_damage_init( hit_location, hit_origin, player );
+		return;
 	}
 	else
 	{
@@ -1940,12 +1953,25 @@ zombie_damage_ads( mod, hit_location, hit_origin, player, amount )
 		return; 
 	}
 
+	if( IsDefined( self.damageweapon ) )
+	{
+		if( self.damageweapon == "tesla_gun" || self.damageweapon == "tesla_gun_upgraded" )
+		{
+			iprintlnbold( "TESLA HIT! MOD: " + mod );
+		}
+	}
+
 	if( self zombie_flame_damage( mod, player ) )
 	{
 		if( self zombie_give_flame_damage_points() )
 		{
 			player maps\_zombiemode_score::player_add_points( "damage_ads", mod, hit_location );
 		}
+	}
+	else if( self maps\_zombiemode_tesla::is_tesla_damage( mod ) )
+	{
+		self maps\_zombiemode_tesla::tesla_damage_init( hit_location, hit_origin, player );
+		return;
 	}
 	else
 	{

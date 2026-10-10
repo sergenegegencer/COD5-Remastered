@@ -21,6 +21,7 @@ clientscripts\_audio.csc
 clientscripts\_callbacks.csc
 clientscripts\_load.csc
 clientscripts\_utility.csc
+clientscripts\_zombiemode_tesla.csc
 clientscripts\createfx\nazi_zombie_prototype_fx.csc
 clientscripts\nazi_zombie_prototype.csc
 clientscripts\nazi_zombie_prototype_amb.csc
@@ -91,6 +92,7 @@ maps\_zombiemode_radio.gsc
 maps\_zombiemode_score.gsc
 maps\_zombiemode_server_throttle.gsc
 maps\_zombiemode_spawner.gsc
+maps\_zombiemode_tesla.gsc
 maps\_zombiemode_timers.gsc
 maps\_zombiemode_utility.gsc
 maps\_zombiemode_weapons.gsc
@@ -683,6 +685,7 @@ weapons\sp\stielhandgranate
 weapons\sp\svt40
 weapons\sp\sw_357
 weapons\sp\syrette
+weapons\sp\tesla_gun
 weapons\sp\thompson
 weapons\sp\type100_smg
 weapons\sp\zombie_colt

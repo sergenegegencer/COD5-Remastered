@@ -26,6 +26,7 @@ main()
 	precachemodel("collision_geo_64x64x64");
 
 	include_weapons();
+	PrecacheItem( "tesla_gun" );
 	PrecacheItem("mine_bouncing_betty");
 	include_powerups();
 
@@ -390,6 +391,7 @@ include_weapons()
 
 	// Special
 	include_weapon( "ray_gun" );
+	include_weapon( "tesla_gun" );
 	include_weapon( "zombie_cymbal_monkey" );
 	include_weapon( "mortar_round" );
 	include_weapon( "satchel_charge", false ); // Only in crate

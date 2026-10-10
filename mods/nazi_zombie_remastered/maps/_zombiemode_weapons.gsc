@@ -142,6 +142,7 @@ init_weapons()
 	add_zombie_weapon( "satchel_charge", 					&"REMASTERED_ZOMBIE_SATCHEL_PURCHASE", 									2000,	"",				0);
 	add_zombie_weapon( "zombie_cymbal_monkey",              &"ZOMBIE_WEAPON_SATCHEL_2000",                                  2000,   "vox_monkey",   8);
 	add_zombie_weapon( "ray_gun", 							&"ZOMBIE_WEAPON_RAYGUN_10000", 									10000,	"vox_raygun",	3); // 66% chance for all characters except Sarge because he has 3 unique lines, so 100% for him
+	add_zombie_weapon( "tesla_gun",                         &"ZOMBIE_BUY_TESLA",                                            10,     "vox_tesla",    6 );
 	// ONLY 1 OF THE BELOW SHOULD BE ALLOWED
 	add_limited_weapon( "m2_flamethrower_zombie", 1 );
 	add_limited_weapon( "signal_flare", 1 );
