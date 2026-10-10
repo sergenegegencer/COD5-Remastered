@@ -7,14 +7,10 @@
 
 init()
 {
-	println( "TESLA INIT ENTERED" );
 	if( !tesla_gun_exists() )
 	{
-		println( "TESLA INIT FAILED: WEAPON NOT REGISTERED" );
 		return;
 	}
-
-	println( "TESLA INIT CONTINUING" );
 
 	level._effect["tesla_bolt"]				= loadfx( "maps/zombie/fx_zombie_tesla_bolt_secondary" );
 	level._effect["tesla_shock"]			= loadfx( "maps/zombie/fx_zombie_tesla_shock" );

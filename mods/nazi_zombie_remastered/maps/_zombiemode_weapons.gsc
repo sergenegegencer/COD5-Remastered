@@ -823,6 +823,11 @@ treasure_chest_give_weapon( weapon_string )
         playsoundatposition("raygun_stinger", (0,0,0));
     }
 
+	if ( (weapon_string == "tesla_gun") )
+    {
+        playsoundatposition("raygun_stinger", (0,0,0));
+    }
+
 	if( weapon_string == "zombie_cymbal_monkey" )
 	{
 		if( self HasWeapon( "molotov" ) )

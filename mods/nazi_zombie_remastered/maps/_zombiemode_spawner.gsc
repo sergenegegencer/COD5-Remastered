@@ -1876,14 +1876,6 @@ zombie_damage( mod, hit_location, hit_origin, player, amount )
 		return; 
 	}
 
-	if( IsDefined( self.damageweapon ) )
-	{
-		if( self.damageweapon == "tesla_gun" || self.damageweapon == "tesla_gun_upgraded" )
-		{
-			iprintlnbold( "TESLA HIT! MOD: " + mod );
-		}
-	}
-
 	if( self zombie_flame_damage( mod, player ) )
 	{
 		if( self zombie_give_flame_damage_points() )
@@ -1951,14 +1943,6 @@ zombie_damage_ads( mod, hit_location, hit_origin, player, amount )
 	if( !IsDefined( player ) )
 	{
 		return; 
-	}
-
-	if( IsDefined( self.damageweapon ) )
-	{
-		if( self.damageweapon == "tesla_gun" || self.damageweapon == "tesla_gun_upgraded" )
-		{
-			iprintlnbold( "TESLA HIT! MOD: " + mod );
-		}
 	}
 
 	if( self zombie_flame_damage( mod, player ) )

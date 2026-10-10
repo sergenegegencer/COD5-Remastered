@@ -2805,7 +2805,7 @@ body
         	ch_peleliu1a_outro_japanese_officer_v2
         	ch_peleliu1a_outro_jackson_v2
         	ch_peleliu1a_outro_polonsky_v2
-        	ch_peleliu1a_outro_jackson_loop_v2 		//	� this anim plays if the jap soldier never reaches Jackson (red shirt)
+        	ch_peleliu1a_outro_jackson_loop_v2 		//	this anim plays if the jap soldier never reaches Jackson (red shirt)
         	ch_peleliu1a_outro_jackson_defend_v2 		
         	
         	ch_pel1_underwater_sullivan	

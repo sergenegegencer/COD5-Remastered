@@ -253,5 +253,4 @@ xanim,ai_zombie_tesla_crawl_death_a
 xanim,ai_zombie_tesla_crawl_death_b
 rawfile,clientscripts/_zombiemode_tesla.csc
 material,zombie_electric_shock_overlay
-sound,weapons_dlc3,,all_sp
-sound,dlc_share,,all_sp
+sound,nazi_zombie_tesla,,all_sp
